@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2025-07-12T06:01:00.187Z",
+    "end": "2025-07-12T06:01:04.918Z",
+    "duration": 4731
+  },
+  "results": [
+    {
+      "uuid": "7bc5d36a-a243-4d1f-a417-e6a54556b73f",
+      "title": "",
+      "fullFile": "cypress/e2e/login.cy.js",
+      "file": "cypress/e2e/login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e242a267-a66d-426c-bf84-ca0613b078d1",
+          "title": "Login tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successful login with valid credentials",
+              "fullTitle": "Login tests Successful login with valid credentials",
+              "timedOut": null,
+              "duration": 1844,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.usernameIsVisivle();\n_LoginPage.default.enterUsername('tomsmith');\n_LoginPage.default.passwordIsVisible();\n_LoginPage.default.enterPassword('SuperSecretPassword!');\n_LoginPage.default.submitButtonIsVisible();\n_LoginPage.default.submit();\n_LoginPage.default.getSuccess().should('contain', 'You logged into a secure area!');",
+              "err": {},
+              "uuid": "f1c1fabd-d505-41dd-a3f1-354a89e0deac",
+              "parentUUID": "e242a267-a66d-426c-bf84-ca0613b078d1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Failed login with invalid username",
+              "fullTitle": "Login tests Failed login with invalid username",
+              "timedOut": null,
+              "duration": 987,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.enterUsername('wrongUsername');\n_LoginPage.default.enterPassword('SuperSecretPassword!');\n_LoginPage.default.submit();\n_LoginPage.default.getError().should('contain', 'Your username is invalid!');",
+              "err": {},
+              "uuid": "3c0c4508-1901-4586-8e0f-53403834128c",
+              "parentUUID": "e242a267-a66d-426c-bf84-ca0613b078d1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Failed login with invalid username",
+              "fullTitle": "Login tests Failed login with invalid username",
+              "timedOut": null,
+              "duration": 838,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.enterUsername('tomsmith');\n_LoginPage.default.enterPassword('wrongPassword!');\n_LoginPage.default.submit();\n_LoginPage.default.getError().should('contain', 'Your password is invalid!');",
+              "err": {},
+              "uuid": "f3cf44e1-8edd-49ac-8c9f-779d666c40c3",
+              "parentUUID": "e242a267-a66d-426c-bf84-ca0613b078d1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f1c1fabd-d505-41dd-a3f1-354a89e0deac",
+            "3c0c4508-1901-4586-8e0f-53403834128c",
+            "f3cf44e1-8edd-49ac-8c9f-779d666c40c3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3669,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

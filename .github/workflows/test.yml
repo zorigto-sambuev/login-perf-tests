@@ -58,10 +58,15 @@ jobs:
           mv k6 ./k6-bin
 
       - name: Run k6 Performance Test and Generate HTML Report
-        run: ./k6-bin run --out dashboard=k6-tests/reports/k6-dashboard.html k6-tests/performance.tests.js
+        run: |
+          mkdir -p k6-tests/reports
+          ./k6-bin run --out dashboard=k6-tests/reports/k6-dashboard.html k6-tests/performance.tests.js
+
+      - name: List files in k6-tests/reports
+        run: ls -al k6-tests/reports
 
       - name: Upload k6 Dashboard HTML Report
         uses: actions/upload-artifact@v4
         with:
           name: k6-dashboard-html
-          path: k6-tests/reports
+          path: k6-tests/reports/k6-dashboard.html

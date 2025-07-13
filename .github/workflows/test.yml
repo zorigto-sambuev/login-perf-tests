@@ -64,7 +64,12 @@ jobs:
         run: mkdir -p k6-tests/reports
 
       - name: Run k6 Performance Test and Generate HTML Report
-        run: ./k6-bin run --out dashboard=k6-tests/reports/k6-dashboard.html k6-tests/performance.tests.js
+        run: |
+          ./k6-bin run --out dashboard --linger k6-tests/performance.tests.js &
+          K6_PID=$!
+          sleep 10  # wait for dashboard server to warm up
+          curl -o k6-tests/reports/k6-dashboard.html http://localhost:5665/export/html
+          kill $K6_PID
 
       - name: List files in k6-tests/reports
         run: ls -al k6-tests/reports

@@ -57,10 +57,14 @@ jobs:
           xk6 build --with github.com/grafana/xk6-dashboard@latest
           mv k6 ./k6-bin
 
+      - name: Clean old k6 report
+        run: rm -f k6-tests/reports/k6-dashboard.html
+
+      - name: Ensure report directory exists
+        run: mkdir -p k6-tests/reports
+
       - name: Run k6 Performance Test and Generate HTML Report
-        run: |
-          mkdir -p k6-tests/reports
-          ./k6-bin run --out dashboard=k6-tests/reports/k6-dashboard.html k6-tests/performance.tests.js
+        run: ./k6-bin run --out dashboard=k6-tests/reports/k6-dashboard.html k6-tests/performance.tests.js
 
       - name: List files in k6-tests/reports
         run: ls -al k6-tests/reports

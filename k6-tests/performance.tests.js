@@ -1,8 +1,10 @@
-import http from 'k6/http';
-import { check, sleep } from 'k6';
-import { Trend } from 'k6/metrics';
+const http = require('k6/http');
+const { check, sleep } = require('k6');
+const { Trend } = require('k6/metrics');
 
-export let options = {
+const responseTime = new Trend('response_time');
+
+const options = {
     stages: [
         {duration: '30s', target: 25},
         {duration: '90s', target: 25}
@@ -13,11 +15,14 @@ export let options = {
     }
 }
 
-let responseTime = new Trend('response_time');
-
-export default function () {
+function defaultFunction () {
     const res = http.get('https://jsonplaceholder.typicode.com/posts')
     check(res, {'status is 200': (r) => r.status === 200 });
     responseTime.add(res.timings.duration);
     sleep(1)
 }
+
+module.exports = {
+    default: defaultFunction,
+    options,
+};

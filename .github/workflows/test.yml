@@ -60,10 +60,10 @@ jobs:
       - name: Run k6 Performance Test and Generate HTML Report
         run: |
           mkdir -p k6-tests/reports
-          ./k6-bin run --out dashboard=k6-tests/k6-dashboard.html k6-tests/performance.tests.js
+          ./k6-bin run --out dashboard=k6-tests/reports/k6-dashboard.html k6-tests/performance.tests.js
 
       - name: Upload k6 Dashboard HTML Report
         uses: actions/upload-artifact@v4
         with:
-          name: k6-dashboard-report
-          path: k6-tests/k6-dashboard.html
+          name: k6-dashboard-html
+          path: k6-tests/reports

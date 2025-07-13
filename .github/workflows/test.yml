@@ -59,7 +59,7 @@ jobs:
 
       - name: Run k6 Performance Test and Generate HTML Report
         run: |
-            mkdir -p k6-tests/reports
+          mkdir -p k6-tests/reports
           ./k6-bin run --out dashboard --summary-export=k6-tests/reports/k6-dashboard.html k6-tests/performance.tests.js
 
       - name: List files in k6-tests/reports
